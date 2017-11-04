@@ -59,7 +59,11 @@
         <div class="sendmail">
             
             <?php
-                $action=$_REQUEST['action'];
+                //$action=$_REQUEST['action'];
+                // il faut pas baser sur action car il n'est pas defini dans form 
+                //donc il fau verifier si action existe ou non
+                $action = (array_key_exists( 'action', $_REQUEST) ? $_REQUEST['action'] : "" );
+
                 if ($action=="")    
                     {
             ?>
@@ -87,7 +91,7 @@
 
                         if (($name=="")||($email=="")||($message==""))
                             {
-                                echo "Tous les zones sont nécessaires, veuillez compléter <a href=\"\">le formulaire</a>.";
+                                echo "Toutes les zones sont nécessaires, veuillez compléter <a href=\"\">le formulaire</a>.";
                             }
                         else
                             {
