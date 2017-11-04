@@ -87,7 +87,7 @@
 
                         if (($name=="")||($email=="")||($message==""))
                             {
-                                echo "Tous les zones sont nécessaires, veuillez compléter <a href=\"\">le formulaire</a>.";
+                                echo "Toutes les zones sont nécessaires, veuillez compléter <a href=\"\">le formulaire</a>.";
                             }
                         else
                             {
