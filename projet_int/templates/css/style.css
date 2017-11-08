@@ -1,0 +1,172 @@
+/*Author: Boutaina.Didioui
+--*/
+
+html,body{
+	font-family: 'Open Sans', sans-serif;
+	background:#e2e2e2;
+}
+body a{
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+
+.navigation
+  {text-align:center;
+  position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  height:85px;
+  z-index:500;
+  background-color: white;
+  box-shadow:0 0 5px rgba(0,0,0,0.7);;
+  }
+
+.navigation img /* Les images li f9lb navigation */
+  {
+    width: 65px;
+    height: 65px;
+    margin: 15px; 
+    margin-left: 150px;
+    float: left;
+    /* Top + Bottom + Right + Left 
+    margin: x y z; // X top / Y right-left / z bottom 
+    margin: x y z w; x top / y right / z left / w bottom 
+    margin: x x; // x top bottom // y right left */ 
+  }
+
+
+.banner-content h1 {
+  color: green;
+  display: none;
+}
+
+.banner-content h2 {
+  color: blue;
+  display: none;
+}
+
+
+.navigation .dropdown .dropbtn
+  {font-family:'Bookman Old Style', serif;
+    font-size:1.3em;
+    color:gray;
+    border: none;
+    cursor: pointer;
+    background:transparent;
+    height:100px;
+  }
+
+.navigation .dropdown 
+  {position: relative;
+    display: inline-block;
+    top:9%;
+  }
+
+.navigation .dropdown .dropdown-content
+  {display: none;
+    position: absolute;
+    background-color: rgba(255,255,255,0.8);
+    width: 160px;
+    height:auto;
+    top:4.5em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+.navigation .dropdown .dropdown-content a 
+  {color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-size:1.1em;
+    padding-top:1em;
+  }
+
+
+.navigation .dropdown .dropdown-content a:hover 
+  {color:#a6a6a6;
+  transition:color 0.4s;
+  }
+
+.dropdown:hover .dropdown-content {display: block;}
+
+
+.dropdown:hover .dropbtn 
+  {color:#a6a6a6;
+  transition:color 0.4s;
+  }
+
+.navigation a
+  {color:#7f8c8d;
+  font-family:'Open Sans', sans-serif;
+  font-size:1.3em;
+  text-decoration:none;
+  padding :0px 15px;
+  top:9%;
+  position:relative;
+  text-transform: uppercase;
+  }
+
+/*quand le souris choisit*/
+.navigation a:hover
+  {color:#a6a6a6;
+  transition:color 0.4s;}
+
+.menu {
+  float: right; 
+  margin-right: 150px;
+}
+/*-- --*/
+.banner {
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 750px;
+  text-align:center;
+  padding:15em 0 0;
+}
+
+.container:after { content: "\0020"; color: #0000CD ; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; 
+}
+
+@media(max-width:480px){
+
+
+.banner {
+  min-height: 190px;
+  padding: 3em 0 0;
+}
+
+}
+
+#toTop {
+  display: none;
+  text-decoration: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  overflow: hidden;
+  width: 32px;
+  height: 24px;
+  border: none;
+  text-indent: 100%;
+  background: url(../images/arrow.1.png) no-repeat 0px 0px;
+}
+#toTop:hover{
+  outline: none;
+}
