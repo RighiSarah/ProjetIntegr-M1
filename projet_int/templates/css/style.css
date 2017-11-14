@@ -2,15 +2,15 @@
 --*/
 
 html,body{
-	font-family: 'Open Sans', sans-serif;
-	background:#e2e2e2;
+  font-family: 'Open Sans', sans-serif;
+  background:#e2e2e2;
 }
 body a{
     transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-o-transition:0.5s all;
-	-ms-transition:0.5s all;
+  -webkit-transition:0.5s all;
+  -moz-transition:0.5s all;
+  -o-transition:0.5s all;
+  -ms-transition:0.5s all;
 }
 
 .navigation
@@ -22,13 +22,13 @@ body a{
   height:85px;
   z-index:500;
   background-color: white;
-  box-shadow:0 0 5px rgba(0,0,0,0.7);;
+  box-shadow:0 0 5px rgba(0,0,0,0.7);
   }
 
 .navigation img /* Les images li f9lb navigation */
   {
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     margin: 15px; 
     margin-left: 150px;
     float: left;
@@ -57,31 +57,32 @@ body a{
     border: none;
     cursor: pointer;
     background:transparent;
-    height:100px;
+    height:95px;
   }
 
 .navigation .dropdown 
   {position: relative;
     display: inline-block;
-    top:9%;
+    top:8%;
   }
 
 .navigation .dropdown .dropdown-content
   {display: none;
     position: absolute;
-    background-color: rgba(255,255,255,0.8);
+    background-color: white;
     width: 160px;
     height:auto;
-    top:4.5em;
+    top:2em;
+    padding: 10px 11px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   }
 
 .navigation .dropdown .dropdown-content a 
   {color: black;
-    padding: 10px 16px;
+    padding: 1px 3px;
     text-decoration: none;
     display: block;
-    font-size:1.1em;
+    font-size:1.0em;
     padding-top:1em;
   }
 
@@ -100,12 +101,11 @@ body a{
   }
 
 .navigation a
-  {color:#7f8c8d;
+  {color:black;
   font-family:'Open Sans', sans-serif;
   font-size:1.3em;
   text-decoration:none;
-  padding :0px 15px;
-  top:9%;
+  padding :90px 30px 10px;
   position:relative;
   text-transform: uppercase;
   }
@@ -154,6 +154,62 @@ body a{
 
 }
 
+/*page de contact*/
+.contact
+  {display:block;
+  padding-top:6em;
+  padding-left:13em;
+  color: black;
+  font-family:'Open Sans', sans-serif;
+  font-size:1.3em;
+  float:left;
+  /*text-shadow:-2px 0 black;*/
+  }
+
+.sendmail
+  {padding-top:8em;
+  padding-right:10em;
+  width: 35%;
+  color: #1a0d00;
+  font-family:'Open Sans', sans-serif;
+  font-size:1.3em;
+  display:block;
+  float:right;
+  color:black;
+  line-height:2.5em;
+  /*text-shadow:-2px 0 black;*/ 
+  }
+
+.sendmail input[type=text]
+  {width:60%;
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size:0.7em;
+  }
+
+.sendmail textarea
+  {
+  font-size:0.7em;
+  }
+
+.sendmail input[type=submit] 
+  {background-color: black ;
+    color: white;
+    padding: 11px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width:40%;
+    font-size:0.7em;
+  }
+
+.sendmail input[type=submit]:hover 
+  {background-color: #a6a6a6;}
+
+
 #toTop {
   display: none;
   text-decoration: none;
@@ -168,5 +224,4 @@ body a{
   background: url(../images/arrow.1.png) no-repeat 0px 0px;
 }
 #toTop:hover{
-  outline: none;
-}
+

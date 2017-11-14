@@ -1,12 +1,47 @@
-<meta charset="utf-8">
-
-<!--Autres métadonnées-->
+<!--Autres métadonnées
 <meta name="Author" content="pj_int"/>
 <meta name="Keywords" content ="association"/>
-<meta name="Description" content="Projet integre"/>
+<meta name="Description" content="Projet integre"/>-->
+
 
 <!--Titre-->
-<title>Association</title>
+<title>Chifaa</title>
+<meta charset="UTF-8">
 
-<!--Feuille CSS-->
-<link rel="stylesheet" type="text/css" href="templates/css/projet.css"/>
+<!--Feuille CSS
+<link rel="stylesheet" type="text/css" href="templates/css/projet.css"/>-->
+<link href="templates/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="icon" type="image/png" href="images/favicon.png" />
+
+<!-- Gogle Fonts : Family Open Sans -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!-- jQuery Library -->
+<script src="templates/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+  var banner = $('.banner');
+  var backgrounds = ['url(images/image1.png)','url(https://placehold.it/1200x800)','url(https://placehold.it/1200x801)'];
+  var current = 0; // Index image courrante // background[0] = images/image1.pn 0 => 2
+
+function nextBackground() {
+  // .css('parametre', 'valeur')
+  banner.css(
+   'background',
+    backgrounds[current = ++current % backgrounds.length]+' no-repeat' // background : url(images/image1.png) no-repeat;
+ );
+
+ banner.css('background-size', 'cover');
+
+ setTimeout(nextBackground, 5000);
+ }
+
+ 
+ setTimeout(nextBackground, 5000); // 5s 
+
+   banner.css('background', backgrounds[0]+' no-repeat');
+   banner.css('background-size', 'cover');
+
+ });
+</script>

@@ -3,10 +3,10 @@
 <html>
 
     <head>
-    	
+        
         <?php include 'templates/includes/$head.html' ?>
         <style>
-            #map {height: 200px;
+            #map {height: 240px;
                     width: 130%;
                 }
         </style>
@@ -59,11 +59,10 @@
         <div class="sendmail">
             
             <?php
-                //$action=$_REQUEST['action'];
-                // il faut pas baser sur action car il n'est pas defini dans form 
-                //donc il fau verifier si action existe ou non
-                $action = (array_key_exists( 'action', $_REQUEST) ? $_REQUEST['action'] : "" );
-
+                
+                $action = ( array_key_exists( 'action', $_REQUEST) ? $_REQUEST['action'] : "" );
+                
+                
                 if ($action=="")    
                     {
             ?>
@@ -77,7 +76,7 @@
                         <input name="email" type="text" value="" size="30"/><br>
                             Votre message:<br>
                         <textarea name="message" rows="10" cols="60"></textarea><br>
-                        <input type="submit" value="Envoyer message"/>
+                        <input type="submit" value="Envoyer message" name="envoie" />
                     </div>
 
                 </form>
@@ -91,7 +90,7 @@
 
                         if (($name=="")||($email=="")||($message==""))
                             {
-                                echo "Toutes les zones sont nécessaires, veuillez compléter <a href=\"\">le formulaire</a>.";
+                                echo "Tous les zones sont nécessaires, veuillez compléter <a href=\"\">le formulaire</a>.";
                             }
                         else
                             {
@@ -103,11 +102,7 @@
                     }  
             ?>
 
-        <div class ="pieddepage">
-            
-            <?php include 'templates/includes/$footpage.html' ?>
-
-        </div>
+        
         
     </body>
     
