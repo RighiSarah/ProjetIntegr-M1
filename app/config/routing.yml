@@ -1,0 +1,9 @@
+asso_chifaa:
+    resource: "@AssoChifaaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    
+jbnet_bootstrap_theme:
+    resource: "@JbnetBootstrapThemeBundle/Resources/config/routing.yml"
+    prefix:   /
+

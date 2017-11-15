@@ -1,0 +1,227 @@
+/*Author: Boutaina.Didioui
+--*/
+
+html,body{
+  font-family: 'Open Sans', sans-serif;
+  background:#e2e2e2;
+}
+body a{
+    transition:0.5s all;
+  -webkit-transition:0.5s all;
+  -moz-transition:0.5s all;
+  -o-transition:0.5s all;
+  -ms-transition:0.5s all;
+}
+
+.navigation
+  {text-align:center;
+  position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  height:85px;
+  z-index:500;
+  background-color: white;
+  box-shadow:0 0 5px rgba(0,0,0,0.7);
+  }
+
+.navigation img /* Les images li f9lb navigation */
+  {
+    width: 55px;
+    height: 55px;
+    margin: 15px; 
+    margin-left: 150px;
+    float: left;
+    /* Top + Bottom + Right + Left 
+    margin: x y z; // X top / Y right-left / z bottom 
+    margin: x y z w; x top / y right / z left / w bottom 
+    margin: x x; // x top bottom // y right left */ 
+  }
+
+
+.banner-content h1 {
+  color: green;
+  display: none;
+}
+
+.banner-content h2 {
+  color: blue;
+  display: none;
+}
+
+
+.navigation .dropdown .dropbtn
+  {font-family:'Bookman Old Style', serif;
+    font-size:1.3em;
+    color:gray;
+    border: none;
+    cursor: pointer;
+    background:transparent;
+    height:95px;
+  }
+
+.navigation .dropdown 
+  {position: relative;
+    display: inline-block;
+    top:8%;
+  }
+
+.navigation .dropdown .dropdown-content
+  {display: none;
+    position: absolute;
+    background-color: white;
+    width: 160px;
+    height:auto;
+    top:2em;
+    padding: 10px 11px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+.navigation .dropdown .dropdown-content a 
+  {color: black;
+    padding: 1px 3px;
+    text-decoration: none;
+    display: block;
+    font-size:1.0em;
+    padding-top:1em;
+  }
+
+
+.navigation .dropdown .dropdown-content a:hover 
+  {color:#a6a6a6;
+  transition:color 0.4s;
+  }
+
+.dropdown:hover .dropdown-content {display: block;}
+
+
+.dropdown:hover .dropbtn 
+  {color:#a6a6a6;
+  transition:color 0.4s;
+  }
+
+.navigation a
+  {color:black;
+  font-family:'Open Sans', sans-serif;
+  font-size:1.3em;
+  text-decoration:none;
+  padding :90px 30px 10px;
+  position:relative;
+  text-transform: uppercase;
+  }
+
+/*quand le souris choisit*/
+.navigation a:hover
+  {color:#a6a6a6;
+  transition:color 0.4s;}
+
+.menu {
+  float: right; 
+  margin-right: 150px;
+}
+/*-- --*/
+.banner {
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 750px;
+  text-align:center;
+  padding:15em 0 0;
+}
+
+.container:after { content: "\0020"; color: #0000CD ; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; 
+}
+
+@media(max-width:480px){
+
+
+.banner {
+  min-height: 190px;
+  padding: 3em 0 0;
+}
+
+}
+
+/*page de contact*/
+.contact
+  {display:block;
+  padding-top:6em;
+  padding-left:13em;
+  color: black;
+  font-family:'Open Sans', sans-serif;
+  font-size:1.3em;
+  float:left;
+  /*text-shadow:-2px 0 black;*/
+  }
+
+.sendmail
+  {padding-top:8em;
+  padding-right:10em;
+  width: 35%;
+  color: #1a0d00;
+  font-family:'Open Sans', sans-serif;
+  font-size:1.3em;
+  display:block;
+  float:right;
+  color:black;
+  line-height:2.5em;
+  /*text-shadow:-2px 0 black;*/ 
+  }
+
+.sendmail input[type=text]
+  {width:60%;
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size:0.7em;
+  }
+
+.sendmail textarea
+  {
+  font-size:0.7em;
+  }
+
+.sendmail input[type=submit] 
+  {background-color: black ;
+    color: white;
+    padding: 11px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width:40%;
+    font-size:0.7em;
+  }
+
+.sendmail input[type=submit]:hover 
+  {background-color: #a6a6a6;}
+
+
+#toTop {
+  display: none;
+  text-decoration: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  overflow: hidden;
+  width: 32px;
+  height: 24px;
+  border: none;
+  text-indent: 100%;
+  background: url(../images/arrow.1.png) no-repeat 0px 0px;
+}
+
+

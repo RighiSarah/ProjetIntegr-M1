@@ -1,0 +1,7 @@
+parameters:
+#    jbnet_bootstrap_theme.example.class: Jbnet\Bootstrap\ThemeBundle\Example
+
+services:
+#    jbnet_bootstrap_theme.example:
+#        class: %jbnet_bootstrap_theme.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
