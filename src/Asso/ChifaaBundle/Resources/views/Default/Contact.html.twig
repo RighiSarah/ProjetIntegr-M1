@@ -1,6 +1,11 @@
 {%extends "::base.html.twig"%}
 {% block body %}
- <div class="contact">
+    
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+ <div class="container">
             <!--Contact-->
             <h1>Contact</h1>
             <!--Adress-->
@@ -14,23 +19,8 @@
             <!--Tel-->
             <p>Tél : 06 15 74 89 37</p>
             
-        <div class="sendmail">
-                <form  action="" method="POST" enctype="multipart/form-data">
-                    <div class="container">
-                        <input type="hidden" name="action" value="submit">
-                            Nom et pr&eacute;nom:<br>
-                        <input name="name" type="text" value="" size="30"/><br>
-                            Adresse mail:<br>
-                        <input name="email" type="text" value="" size="30"/><br>
-                            Votre message:<br>
-                        <textarea name="message" rows="10" cols="60"></textarea><br>
-                        <input type="submit" value="Envoyer message" name="envoie" />
-                    </div>
-                </form>
-           
-        </div>
- </div>       
-    <script>
+            <div id="map"></div>
+                <script>
                     function initMap() {
                       var uluru = {lat: 45.774808, lng: 4.956233};
                       var map = new google.maps.Map(document.getElementById('map'), {
@@ -47,4 +37,31 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9bMXs_ExyQdIIBEjRzs2uK_gmDJ4Qgwk&callback=initMap">
 </script>
+ </div>  
+ 
+<div class="container col-md-offset-4">
+        <form  action="" method="POST" enctype="multipart/form-data">
+            <div class="form-group ">
+                 <label for="name">  Nom et pr&eacute;nom:</label>
+                 <input type="text" class="form-control" id="name" placeholder="Nom et prénom" name="name" style = "width:400px"> 
+            </div>
+            
+            <div class="form-group ">
+                 <label for="mail"> Email :</label>
+                 <input type="mail" class="form-control" id="mail" placeholder="Adesse Mail" name="mail" style = "width:400px"> 
+            </div>
+            <div class="form-group ">
+                 <label for="msg"> Votre message :</label>
+                 <textarea type="text" class="form-control" id="msg" placeholder="Rédiger un méssage" name="msg" style = "width:600px"> </textarea>
+            </div>
+              <input type="submit" class="btn btn-info" value="Envoyer">
+          
+        </form>
+
+</div>      
+  
 {% endblock %}
+{% block javascript %}
+  
+{% endblock %}
+    
