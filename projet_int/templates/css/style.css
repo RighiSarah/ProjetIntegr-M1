@@ -1,11 +1,9 @@
-
 /*Author: Boutaina.Didioui
 --*/
 
 html,body{
   font-family: 'Open Sans', sans-serif;
   background:#e2e2e2;
-  margin: 0;
 }
 body a{
     transition:0.5s all;
@@ -128,7 +126,7 @@ body a{
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
-  height: 450px;
+  min-height: 750px;
   text-align:center;
   padding:15em 0 0;
 }
@@ -197,8 +195,7 @@ body a{
   }
 
 .sendmail input[type=submit] 
-  {
-    background-color: black ;
+  {background-color: black ;
     color: white;
     padding: 11px 20px;
     margin: 8px 0;
@@ -224,184 +221,6 @@ body a{
   height: 24px;
   border: none;
   text-indent: 100%;
-  background: url(images/arrow.1.png) no-repeat 0px 0px;
+  background: url(../images/arrow.1.png) no-repeat 0px 0px;
 }
 
-
-.footer {
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 150px;
-  background-color: #95a5a6;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.footer a {
-  color: #fff;
-}
-.footer li {
-  margin-right: 20px;
-}
-
-.footer-bottom {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 60px;
-  background-color: #2c3e50; 
-  padding-top: 30px;
-  padding-left: 30px; 
-  padding-right: 30px;
-}
-
-.copyright {
-  float: left;
-  width: 200px;
-  height: 45px;
-  padding-top: 10px;
-}
-
-.social {
-  margin-top: 20px;
-}
-
-.footer-menu {
-  float: right;
-}
-
-.footer-menu li {
-  display: inline;
-  width: 500px;
-  height: 45px;
-}
-
-section {
-  padding-top: 100px;
-}
-
-section .principe {
-  background: #ffffff;
-  height:   800px;
-  width: 80%;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-section .principe h1 {
-font-size: 30px;
-line-height: 30px;
-font-weight: 400;
-text-transform: none;
-display: inline-block;
-margin-top: 20;
-padding-bottom: 10px;
-border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-margin-left: 20px;
-text-align: justify; 
-} 
-
-
-section .principe p {
-font-size: 20px;
-line-height: 20px;
-font-weight: 200;
-text-transform: none;
-display: inline-block;
-margin-top: 20;
-padding-bottom: 10px;
-margin-left: 20px;
-text-align: justify;
-margin-right: 10px; 
-} 
-
-section .valeurs{
-  background: #ffffff;
-  height:   800px;
-  width: 80%;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-section .valeurs h1 {
-font-size: 30px;
-line-height: 30px;
-font-weight: 400;
-text-transform: none;
-display: inline-block;
-margin-top: 20;
-padding-bottom: 10px;
-border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-margin-left: 20px;
-text-align: justify; 
-} 
-
-section .Nosaction{
-background: #ffffff;
-  height:   800px;
-  width: 80%;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-section .Nosaction h1 {
-font-size: 30px;
-line-height: 30px;
-font-weight: 400;
-text-transform: none;
-display: inline-block;
-margin-top: 20;
-padding-bottom: 10px;
-border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-margin-left: 20px;
-text-align: justify; 
-} 
-
-section .Quisommes{
-
-  background: #ffffff;
-  height:   800px;
-  width: 80%;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-
-section .Quisommes h1 {
-font-size: 30px;
-line-height: 30px;
-font-weight: 400;
-text-transform: none;
-display: inline-block;
-margin-top: 20;
-padding-bottom: 10px;
-border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-margin-left: 20px;
-text-align: justify; 
-} 
-
-section .partenaire {
-background: #ffffff;
-  height:   800px;
-  width: 95%;
-  margin-left: 30px;
-  margin-top: 10px;
-
-}
-
-
-section .partenaire h1{
-font-size: 30px;
-line-height: 30px;
-font-weight: 400;
-text-transform: none;
-display: inline-block;
-margin-top: 20;
-padding-bottom: 10px;
-border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-margin-left: 20px;
-text-align: justify; 
-}

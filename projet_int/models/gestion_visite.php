@@ -10,6 +10,7 @@
  *
  * @author pci
  */
+require ("gestion_ins.php");
 class Visites extends \Inscription{
     //put your code here
     Private $Lieu;
@@ -19,7 +20,7 @@ class Visites extends \Inscription{
          return $this -> Lieu;
      }
      public function setLieu($lieu){
-         $this ->Mail= $lieu;
+         $this ->Lieu= $lieu;
          return $this;
      }
      //------------------------------------------------------------------------
@@ -33,22 +34,13 @@ class Visites extends \Inscription{
      //------------------------------------------------------------------------
      public function Prevoire_visite(){
      require("connect_db.php");
-       if(($this->Nom != "" ) && ($this->Prenom != "" ) && ($this->Mail != "" )&&($this->Lien != "" )&&($this->Lieu != "" )){
+       echo "je suis pas entrée";
+       if(($this->Lien != "" )&&($this->Lieu != "" )){
 				$conn = new mysqli($servername,$username, $password,$dbname);
 				if($conn != null){
 				
 	       $stmt = "INSERT INTO publications(Nature,Lien,Description,Etat)VALUES('Visite','".$this->Lien."','".$this->Lieu."','0')";
-            //    $stmt = "INSERT INTO personnes(Identifiant,Nom,Prenom,Telephone,Mail,passwrd,Adresse,Partage,valide)"
-      //."VALUES('"."zetettz"."','"."uytutut"."','"."ueuety"."','"."TYFGD"."','"."dhgd"."','"."trrtutr"."','"."yeyreyy"."',1,0)";
-                                 /* $stmt->bindParam (':identifiant', "dsgsgsgsdg");
-				   $stmt->bindParam (':nom', $this->Nom);
-				   $stmt->bindParam (':prenom',$this->Prenom);
-				   $stmt->bindParam (':password',$this->Passwrd);
-				   $stmt->bindParam (':telephone',$this->Telephone);
-				   $stmt->bindParam (':adresse',$this->Adresse);
-                                   $stmt->bindParam (':partage',$this->Partage);
-				   $stmt->bindParam (':mail',$this->Mail);*/
-                         
+                         echo "je suis entrée";
 			if($conn->query($stmt))  echo "success";
                                  else echo "failed"; 
 		}

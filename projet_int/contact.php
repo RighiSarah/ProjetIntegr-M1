@@ -29,7 +29,7 @@
                 Association CHIFAA<br/>
                 <br/>
                 4 Rue Victor Considerant<br/>
-                69150 Décines-Charpieu<br/>
+                69150 D&eacute;cines-Charpieu<br/>
                 Lyon France<br/>
             </adress>
 

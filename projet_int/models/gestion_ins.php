@@ -73,16 +73,7 @@
 				
 	       $stmt = "INSERT INTO personnes(Identifiant,Nom,Prenom,Telephone,Mail,passwrd,Adresse,Partage,valide)"
       ."VALUES('".$this->Mail."','".$this->Nom."','".$this->Prenom."','".$this->Telephone."','".$this->Mail."','".$this->Passwrd."','".$this->Adresse."','".$this->Partage."','0')";
-            //    $stmt = "INSERT INTO personnes(Identifiant,Nom,Prenom,Telephone,Mail,passwrd,Adresse,Partage,valide)"
-      //."VALUES('"."zetettz"."','"."uytutut"."','"."ueuety"."','"."TYFGD"."','"."dhgd"."','"."trrtutr"."','"."yeyreyy"."',1,0)";
-                                 /* $stmt->bindParam (':identifiant', "dsgsgsgsdg");
-				   $stmt->bindParam (':nom', $this->Nom);
-				   $stmt->bindParam (':prenom',$this->Prenom);
-				   $stmt->bindParam (':password',$this->Passwrd);
-				   $stmt->bindParam (':telephone',$this->Telephone);
-				   $stmt->bindParam (':adresse',$this->Adresse);
-                                   $stmt->bindParam (':partage',$this->Partage);
-				   $stmt->bindParam (':mail',$this->Mail);*/
+          
                          
                         
                 
