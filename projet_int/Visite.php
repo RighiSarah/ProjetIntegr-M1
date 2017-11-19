@@ -3,7 +3,7 @@
 <html>
 
     <head>
-        
+        <?php require 'models/gestion_visite.php' ?>
         <?php include 'templates/includes/$head.html' ?>
         <style>
             #map {height: 240px;
@@ -31,26 +31,26 @@
 		         <h1>Pr&eacute;voir une visite </h1>	
 		    </div>
 		<div class="container col-md-offset-4">
-        <form  action="" method="POST" enctype="multipart/form-data">
+        <form  action="" method="POST" enctype="multipart/form-data" id="visite" name ="visite">
               <div class="form-group ">
                  <label for="name">  Nom:</label>
-                 <input type="text" class="form-control" id="name" placeholder="Nom" name="name" style = "width:400px"> 
+                 <input type="text" class="form-control" id="name" placeholder="Nom" name="name" style = "width:400px" required> 
             </div>
 			<div class="form-group ">
                  <label for="name">  Pr&eacute;nom :</label>
-                 <input type="text" class="form-control" id="prenom" placeholder=" Pr&eacute;nom" name="prenom" style = "width:400px"> 
+                 <input type="text" class="form-control" id="prenom" placeholder=" Pr&eacute;nom" name="prenom" style = "width:400px" required> 
             </div>
 			 
             <div class="form-group ">
 			
                  <label for="mail"> Email :</label>
-                 <input type="mail" class="form-control" id="mail" placeholder="Adresse Mail" name="mail" style = "width:400px"> 
+                 <input type="mail" class="form-control" id="mail" placeholder="Adresse Mail" name="mail" style = "width:400px" required> 
             </div>
 			 <div class="form-group ">
 			
                   <div class="form-group">
 				    <label for="mail"> Lien :</label>
-					  <select class="form-control" id="lien" style = "width:400px">
+					  <select class="form-control" id="lien" name="lien" style = "width:400px">
 						<option>lien 1</option>
 						<option>lien 2</option>
 					  </select>
@@ -60,17 +60,27 @@
 			 <div class="form-group ">
 			
                  <label for="mail"> Lieu :</label>
-                 <textarea type="mail" class="form-control" id="mail" placeholder="Adresse Mail" name="mail" style = "width:400px"> </textarea>
+                 <textarea type="mail" class="form-control" id="mail" placeholder="Adresse Mail" name="lieu" style = "width:400px" required> </textarea>
             </div>
 		    
 
-              <input type="submit" class="btn btn-info" value="Envoyer">
+              <input type="submit" class="btn btn-info" value="env">
           
         </form>
 
-</div> 
-		 
-		 
-		 
-		 
+</div> 		 			 
    </body>
+   <?php
+if(isset($_POST['env'])){
+    $mail = $_POST["mail"]; 
+    $lieu =  $_POST["lieu"];
+    $lien =  $_POST["lien"];
+        $p = new Inscription();
+        $v = new Visites();
+        $v ->setLien($lien);
+        $v ->setLieu($lieu);
+        $v ->setMail($mail);
+        $v ->Prevoire_visite();
+       
+}	 
+?>	

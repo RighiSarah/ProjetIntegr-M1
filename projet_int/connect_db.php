@@ -4,5 +4,5 @@
 $servername="localhost:3306";
 $username="root";
 $password="";
-$dbname="CHIFAA";
+$dbname="chifaa";
 ?>
