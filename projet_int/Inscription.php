@@ -36,7 +36,7 @@
                  <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" style = "width:400px" required> 
             </div>
 			<div class="form-group ">
-                 <label for="name">  Pr&eacute;nom :</label>
+                 <label for="name">  Prénom :</label>
                  <input type="text" class="form-control" id="prenom" placeholder=" Pr&eacute;nom" name="prenom" style = "width:400px" required> 
             </div>
              <div class="form-group ">
@@ -63,7 +63,7 @@
                  <input type="texte" class="form-control" id="tel" placeholder="Telephone" name="telephone" style = "width:400px"> 
             </div>
             <div class="form-group ">
-                <p>voulez vous partagez vos informations avec les autres membres ?:</p>
+                <p>voulez vous partagez vos informations avec les autres membres ?</p>
                  <label class="radio-inline">
                      <input type="radio" id="partage"  name="partage" value="oui" checked="true">oui</label>
                  <label class="radio-inline">

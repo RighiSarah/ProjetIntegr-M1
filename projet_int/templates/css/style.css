@@ -1,9 +1,11 @@
+
 /*Author: Boutaina.Didioui
 --*/
 
 html,body{
   font-family: 'Open Sans', sans-serif;
   background:#e2e2e2;
+  margin: 0;
 }
 body a{
     transition:0.5s all;
@@ -126,7 +128,7 @@ body a{
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
-  min-height: 750px;
+  height: 450px;
   text-align:center;
   padding:15em 0 0;
 }
@@ -195,7 +197,8 @@ body a{
   }
 
 .sendmail input[type=submit] 
-  {background-color: black ;
+  {
+    background-color: black ;
     color: white;
     padding: 11px 20px;
     margin: 8px 0;
@@ -221,8 +224,9 @@ body a{
   height: 24px;
   border: none;
   text-indent: 100%;
-  background: url(../images/arrow.1.png) no-repeat 0px 0px;
+  background: url(images/arrow.1.png) no-repeat 0px 0px;
 }
+
 
 .footer {
   position: relative;

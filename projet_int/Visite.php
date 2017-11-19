@@ -28,7 +28,7 @@
 		   </br>
 		    </br>
 			<div class="container col-md-offset-4">
-		         <h1>Pr&eacute;voir une visite </h1>	
+		         <h1>Prévoir une visite </h1>	
 		    </div>
 		<div class="container col-md-offset-4">
         <form  action="" method="POST" enctype="multipart/form-data" id="visite" name ="visite">
@@ -37,7 +37,7 @@
                  <input type="text" class="form-control" id="name" placeholder="Nom" name="name" style = "width:400px" required> 
             </div>
 			<div class="form-group ">
-                 <label for="name">  Pr&eacute;nom :</label>
+                 <label for="name">  Prénom :</label>
                  <input type="text" class="form-control" id="prenom" placeholder=" Pr&eacute;nom" name="prenom" style = "width:400px" required> 
             </div>
 			 
@@ -83,3 +83,4 @@ if(isset($_POST['env'])){
        
 }	 
 ?>	
+</html>
