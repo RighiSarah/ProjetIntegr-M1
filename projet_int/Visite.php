@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 
@@ -75,7 +75,6 @@ if(isset($_POST['env'])){
     $mail = $_POST["mail"]; 
     $lieu =  $_POST["lieu"];
     $lien =  $_POST["lien"];
-        $p = new Inscription();
         $v = new Visites();
         $v ->setLien($lien);
         $v ->setLieu($lieu);
