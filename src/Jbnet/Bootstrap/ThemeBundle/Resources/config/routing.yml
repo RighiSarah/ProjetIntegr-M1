@@ -1,3 +1,0 @@
-jbnet_bootstrap_theme_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: JbnetBootstrapThemeBundle:Default:index }
