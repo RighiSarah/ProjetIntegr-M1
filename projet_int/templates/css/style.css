@@ -223,11 +223,16 @@ body a{
   text-indent: 100%;
   background: url(../images/arrow.1.png) no-repeat 0px 0px;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 =======
 }
 
+=======
+}
+
+>>>>>>> parent of ffa485b... Remplacement de index.html par index.php pour respecter le modèle mcv
 .footer {
   position: relative;
   right: 0;
@@ -405,4 +410,7 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 margin-left: 20px;
 text-align: justify; 
 }
+<<<<<<< HEAD
+>>>>>>> parent of ffa485b... Remplacement de index.html par index.php pour respecter le modèle mcv
+=======
 >>>>>>> parent of ffa485b... Remplacement de index.html par index.php pour respecter le modèle mcv
