@@ -1,9 +1,0 @@
- <div class="logo">
-				<a href="index.html"><img src="Resources/images/logo2.png" alt="Chifaa"></a>
-	    	 </div>  
-			 
-			 <a href="{{ path('delete_route_name', {'id': entity.id }) }}">Delete</a>
-			 
-			 
-			 
-			 #1a0d00;
