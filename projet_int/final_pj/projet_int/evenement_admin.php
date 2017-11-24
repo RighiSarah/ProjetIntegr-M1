@@ -80,16 +80,23 @@ if (isset($_POST['supp'])or isset($_POST['modif'])){
 
 
 					if (isset($_POST['titre']) and isset($_POST['date']) and isset($_POST['heure']) and isset($_POST['description']) and isset($_POST['lieu'])){
-						$sql = "INSERT INTO evenements VALUES (DEFAULT,'" .$_POST['titre']."','".$_POST['date']."','".$_POST['heure']."','".$_POST['description']."','".$_POST['lieu']."')";
+						//$sql = "INSERT INTO evenements VALUES (DEFAULT,'" .$_POST['titre']."','".$_POST['date']."','".$_POST['heure']."','".$_POST['description']."','".$_POST['lieu']."')";
 						//$sql = "INSERT INTO evennements(Titre,Date,Heure,Objectif,Lieu) VALUES ('$t','$d','$h','$de','$l')";
-						
+						$sql = "INSERT INTO evenements (identifiant,Titre,Date,Heure,Objectif,Lieu) VALUES (DEFAULT,?, ?, ?, ?,?)";
+						$stmt = $conn->prepare($sql);
+						$stmt->bind_param("sssss", $_POST['titre'], $_POST['date'],$_POST['heure'],$_POST['description'],$_POST['lieu']);
+						$events = $stmt->execute();
 					}else{
 
 						$sql = "SELECT * FROM evenements ORDER BY identifiant DESC";
+						$events = mysqli_query($conn,$sql);
 					}
+
 					
 					
-					if(mysqli_query($conn,$sql) !== FALSE){
+
+					//if(mysqli_query($conn,$sql) !== FALSE){
+					if($events !== FALSE){
 						
 						$events = mysqli_query($conn,"SELECT * FROM evenements ORDER BY identifiant DESC");
 						$array = array();
@@ -102,7 +109,7 @@ if (isset($_POST['supp'])or isset($_POST['modif'])){
 
 							echo "<p style='text-align:center; font-size:150%;'>Il n' y a pas de nouvel &eacute;v&eacute;nement</p>";
 
-						}else if (sizeof($array)>0 AND sizeof($array)<=3){
+						}else if (sizeof($array)>0){
 							echo '<table>';
 
 							for ($i=0; $i < sizeof($array); $i++){
@@ -164,10 +171,12 @@ if (isset($_POST['supp'])or isset($_POST['modif'])){
 				     if(isset($_POST['modif'])){
 				     	$id = $_POST['id_event'];
 				        
-				        $req = "UPDATE evenements SET Titre = '".$_POST['titre_mo']."',Date ='".$_POST['date_mo']."',Heure ='".$_POST['heure_mo']."',Lieu='".$_POST['lieu_mo']."',Objectif ='".$_POST['description_mo']."' WHERE identifiant ='".$_POST['id_event']."' ";
+				        //$req = "UPDATE evenements SET Titre = '".$_POST['titre_mo']."',Date ='".$_POST['date_mo']."',Heure ='".$_POST['heure_mo']."',Lieu='".$_POST['lieu_mo']."',Objectif ='".$_POST['description_mo']."' WHERE identifiant ='".$_POST['id_event']."' ";
 
-				        mysqli_query($conn,$req);
-				        echo $conn->error;
+				        $req = "UPDATE evenements SET Titre = ? ,Date =? ,Heure =? ,Lieu=? ,Objectif = ? WHERE identifiant =?";
+						$stmt = $conn->prepare($req);
+						$stmt->bind_param("sssssi", $_POST['titre_mo'], $_POST['date_mo'],$_POST['heure_mo'],$_POST['lieu_mo'],$_POST['description_mo'],$_POST['id_event']);
+						$events = $stmt->execute();
 				    }
 
         			$conn->close();
