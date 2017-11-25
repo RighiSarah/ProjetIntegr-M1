@@ -1,9 +1,11 @@
-.!DOCTYPE html>
+<?php
+session_start();
+ini_set('display_errors', 1); //afficher les warnings
 
+?>
 <html>
 
-    <head>
-        
+    <head>        
         <?php include 'templates/includes/$head.html' ?>
         <style>
             #myInput {
@@ -22,106 +24,110 @@
 		<script src="templates/js/bootstarp.min.js"></script>
     </head>
 
-    <body>
+ <body>
          
-         <div class="navigation">
-
+   <div class="navigation">
             <?php include 'templates/includes/$navigation.php' ?>
-
-         </div>
+   </div>
 		      </br>
           </br>
           </br>
           </br>
-          <div class="row">
-          <div class="col-lg-12">
-           <div class="container">
-        <div class="row">
-            <a href="FAQ.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-question-sign"></span> Questions fréquemment posées / F.A.Q</a>
-            <div class="row col-md-10 ">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="container">
+          <div class="row">          
             </br>
-          </br>
-          </br>
-          </br>
-            <input type="text" id="myInput" onkeyup="search()" placeholder="Rechercher un sujet..">
-        </div>
-        </div>
-
-        
+            <a href="FAQ.php" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-question-sign"></span> Questions fréquemment posées / F.A.Q</a>
+          </div>        
         </div>
     </div>
-   
+   </div>
+         </br>   
          </br>
-          </br>
-          </br>
-          </br>
+         </br>
+          <div class ="row " >
+            <div class="col-lg-8">
+              <div class="col-lg-4">
+                <a href="insert_sujet.php" class="btn btn-lg btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Insérer un sujet</a>
+              </div>
+            </div>
+          </div>
           <?php
           // **********************************************BDD*********************************************
-          // on se connecte à notre base de données
-            try
+          // on se connecte à notre base de données  
+              include 'connect_db.php' ;
+                try
               {
-                 $base = new PDO('mysql:host=localhost;dbname=chifaa;charset=utf8', 'root', '');
-            }
-                catch (Exception $e)
+                 $base = new PDO('mysql:host='.$servername.';dbname='.$dbname.';charset=utf8', $username, $password);
+              }
+               catch (Exception $e)
                 {
                  die('Erreur : ' . $e->getMessage());
                 }
-            // préparation de la requete
-            $sql =$base->query( 'SELECT id, auteur, titre, date_derniere_reponse FROM forum_sujets ORDER BY date_derniere_reponse DESC');
 
-             ?>
-                <div class="row col-md-10 col-md-offset-1 custyle">
-                <table class="table table-striped custab" id ="myTable">
+            // préparation de la requete
+         $sql =$base->query( 'SELECT id, auteur, titre, date_derniere_reponse FROM forum_sujets ORDER BY date_derniere_reponse DESC');
+            // on compte le nombre de sujets du forum
+         $nb_sujets = $sql->rowCount();
+
+          if ($nb_sujets == 0) {
+            echo '</br>';
+            echo '<div class="row col-md-8 col-md-offset-2 alert alert-danger">
+                     <strong>IMPORTANT!</strong> Aucune question n\'a été encore posé sur le forum.
+                  </div>';
+          }
+            
+       else { ?>
+         <div class="row ">
+          <div class ="col-md-10 col-md-offset-1 ">
+            </br>
+            </br>          
+            <input type="text" id="myInput" onkeyup="search()" placeholder="Rechercher un sujet..">
+          </div>
+         </div>
+            </br>
+        <div class="row col-md-10 col-md-offset-1 custyle">
+            <table class="table table-striped custab" id ="myTable">
                 <thead>
- 
-                <a href="insert_sujet.php" class="btn btn-lg btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Insérer un sujet</a>
                     <tr>
                         <th>Sujet</th>
                         <th>Auteur</th>
                         <th>Date dernière réponsee</th>
-                        <th class="text-center">Action</th>
+                        <th class="text-center"></th>
                     </tr>
-                 </thead>
-         
-            <?php
+                 </thead>         
+        <?php
                
-                        while ($data = $sql->fetch())
+               while ($data = $sql->fetch())
                  {
                 sscanf($data['date_derniere_reponse'], "%4s-%2s-%2s %2s:%2s:%2s", $annee, $mois, $jour, $heure, $minute, $seconde);
                 // on affiche les résultats
                 echo '<tr>';
                 echo '<td>';
-                 // on affiche le titre du sujet, et sur ce sujet, on insère le lien qui nous permettra de lire les différentes réponses de ce sujet
-                
+                 // on affiche le titre du sujet, et sur ce sujet, on insère le lien qui nous permettra de lire les différentes réponses de ce sujet                
                 echo '<a href="lire_sujet.php?id_sujet_a_lire=' , $data['id'] , '">' , htmlentities(trim($data['titre'])) , '</a>';
-
                 echo '</td><td>';
-
                                 // on affiche le nom de l'auteur de sujet
                 echo htmlentities(trim($data['auteur']));
                 echo '</td><td>';
-
                 // on affiche la date de la dernière réponse de ce sujet
                 echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
                   ?>
-                </td><td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-              
+                </td><td class="text-center"><a class='btn btn-info btn-sm' <?php echo 'href=" lire_sujet.php?id_sujet_a_lire=' , $data['id'] , ' "'?>><span class="glyphicon glyphicon-edit"></span> Lire les réponses</a> </td>              
                 </tr>
 
-    <?php
+        <?php
     }
+  }
 
-    // on libère l'espace mémoire alloué pour cette requête
-    //mysql_free_result ($req);
-    // on ferme la connexion à la base de données.
-    //mysql_close ();
     $sql->closeCursor();
     ?>
         </table>
     </div>
 </div>
-<?php include 'templates/includes/$footpage.html' ?>
-    <script>
+
+<script>
 function search() {
   // Declare variables 
   var input, filter, table, tr, td, i;
@@ -144,7 +150,9 @@ function search() {
 }
 search();
 </script>
-</body>
 
+
+
+</body>
 
 </html>
