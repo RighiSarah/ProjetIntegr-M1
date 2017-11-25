@@ -71,7 +71,6 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 
 	    ));
 
-		mysql_close();
 		// on redirige vers la page d'accueil
 		header('Location: FAQ.php');
 		// on termine le script courant

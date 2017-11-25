@@ -59,8 +59,7 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 
 		));
 
-		// on ferme la connexion à la base de données
-		mysql_close();
+
 
 		// on redirige vers la page de lecture du sujet en cours
 		header('Location: lire_sujet.php?id_sujet_a_lire='.$_GET['numero_du_sujet']);
