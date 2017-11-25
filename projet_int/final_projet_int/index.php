@@ -43,7 +43,7 @@ if(isset($_POST['env'])){
 					<?php include 'templates/includes/$banner.html' ?>
 				</div>
 
-
+			<!--les boutons (devenir bénévole, contact , faire une visite)-->	
       		<div class="container-fluid">
         		<div class="row buttons">
                 <div class="box1 shadowbox col-md-4"><a href="inscription.php"><i class="fa fa-handshake-o fa-5x"></i><br/>Devenir bénévole</a></div>
@@ -59,7 +59,7 @@ if(isset($_POST['env'])){
 								<h1>Principe </h1>
 								<p>
 									Notre principe:
-									lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum umlorem ipsum
+									
 								</p>
 							</div>
 						</div>
@@ -104,7 +104,6 @@ if(isset($_POST['env'])){
 				<?php include 'templates/includes/$footpage.html' ?>
 			</div>
 
-			<script src="https://use.fontawesome.com/8c182752b4.js"></script>
 		</div>
 	</body>
 </html>

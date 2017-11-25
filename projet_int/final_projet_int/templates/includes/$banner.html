@@ -1,28 +1,32 @@
+
 <div class="banner-content">
 			<h1>Chifaa</h1>
 			<h2>Association Humanitaire</h2>
 </div>
 
+
+
 <script type="text/javascript">
 $(function() {
-  var banner = $('.banner');
-  var backgrounds = ['url(images/bg.jpg)','url(images/bg.jpg)','url(images/bg.jpg)'];
+  var banner = $('.banner'); // récupération de la classe banner
+  var backgrounds = ['url(images/bg.jpg)','url(images/bg.jpg)','url(images/bg.jpg)']; //tableu contenant les images (slide effect)
   var current = 0; // Index image courrante // background[0] = images/image1.pn 0 => 2
 
-function nextBackground() {
-  // .css('parametre', 'valeur')
+
+function nextBackground() { //changement du background
+  
   banner.css(
    'background',
     backgrounds[current = ++current % backgrounds.length]+' no-repeat' // background : url(images/image1.png) no-repeat;
  );
 
- banner.css('background-size', 'cover');
+ banner.css('background-size', 'cover'); //cover : rend l'image adéquate avec la résolution de l'écran 
 
- setTimeout(nextBackground, 5000);
+ setTimeout(nextBackground, 5000); //réexecution de la fonction après cinq seconde 
  }
 
 
- setTimeout(nextBackground, 5000); // 5s
+ setTimeout(nextBackground, 5000); // 1er appel de la fonction 
 
    banner.css('background', backgrounds[0]+' no-repeat');
    banner.css('background-size', 'cover');
@@ -30,19 +34,22 @@ function nextBackground() {
  });
 
 	$(function() {
-	$('.navigation').css('background','transparent');
-	$('.banner-content h1').fadeIn(3000);
+	$('.navigation').css('background','transparent'); //rendre la barre de navigation transparente 
+	$('.banner-content h1').fadeIn(3000); //effet du texte (chifaa associtation humanitaire)
 	$('.banner-content h2').fadeIn(4000);
 	});
 
+
+//changement de la barre navigation en fonction du défilement de la page
+
 $(window).scroll(function() {
-		var s = ($(window).scrollTop() / $(document).height())*10;
-	if (s > 0.7) {
+		var s = ($(window).scrollTop() / $(document).height())*10; //pourcentage scroll
+	if (s > 0.7) { //Si 7% du scroll on change la couleur de la barre navigation en blanc
 		$('.navigation').css('background','rgba(255,255,255, '+ s +')');
 		$('.menu a').css('color','black');
 		$('.login a').css('color','black');
 		$('.logo img').attr('src','images/logo2.png');
-	} else {
+	} else { // inf a 7% la barre de naviagtion revient a sa transparence 
 		$('.navigation').css('background','transparent');
 		$('.menu a').css('color','white');
 		$('.login a').css('color','white');

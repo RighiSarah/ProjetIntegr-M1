@@ -1,4 +1,4 @@
-  <div class="navigation clearfix">
+  <div class="navigation clearfix"> 
   	<div class="logo">
   	    <a href="index.php"><img src="images/logo.png" alt="Chifaa"></a>
   	</div>
@@ -23,8 +23,9 @@
   		<span><a href="partenaire.php">PARTENAIRES</a></span>
   	</div>
 
+
   	<div class="login">
-      <?php if (isset($_SESSION['ident'])): ?>
+      <?php if (isset($_SESSION['ident'])): // connected ?>
         <div class="dropdown">
     			<a href="#">ESPACE MEMBRE</a>
     			 <div class="dropdown-content">
@@ -33,10 +34,10 @@
               <a href='evenement_admin.php'>&Eacute;v&eacute;nements</a>
     			</div>
     		</div>
-
       <a> / </a><a href="deconnexion.php">Se déconnecter &nbsp;<i class="fa fa-times"></i></a>
       <?php endif; ?>
-      <?php if (!isset($_SESSION['ident'])): ?>
+
+      <?php if (!isset($_SESSION['ident'])): // not connected ?>
         <a href="connexion.php"><i class="fa fa-user"></i> &nbsp; Se Connecter</a>
       <?php endif; ?>
 
