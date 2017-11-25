@@ -29,7 +29,7 @@
         <div class="dropdown">
     			<a href="#">ESPACE MEMBRE</a>
     			 <div class="dropdown-content">
-    			    <a href="#">Carnet d'adresse</a>
+    			    <a href="carnet_adresse.php">Carnet d'adresse</a>
               <a href='FAQ.php'>FAQ</a>
               <a href='evenement_admin.php'>&Eacute;v&eacute;nements</a>
     			</div>
