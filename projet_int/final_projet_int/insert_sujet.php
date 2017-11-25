@@ -1,4 +1,6 @@
 <?php
+session_start();
+ini_set('display_errors', 1); //afficher les warnings
 // on teste si le formulaire a été soumis
 if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 	// on teste la déclaration de nos variables
@@ -8,33 +10,28 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 	else {
 	// on teste si les variables ne sont pas vides
 	if (empty($_POST['auteur']) || empty($_POST['titre']) || empty($_POST['message'])) {
-		$erreur = 'Au moins un des champs est vide.';
+		$erreur = '<div class="alert alert-danger">
+  					<strong>ERREUR !</strong> Au moins un des champs est vide.
+				</div>';
 	}
 
 	// si tout est bon, on peut commencer l'insertion dans la base
 	else {
 		// on se connecte à notre base
-		//$base = mysql_connect ('serveur', 'login', 'password');
-		//mysql_select_db ('nom_base', $base) ;
-		try
-		{
-			$base = new PDO('mysql:host=localhost;dbname=chifaa;charset=utf8', 'root', '');
-		}
-			catch (Exception $e)
-			{
-        		die('Erreur : ' . $e->getMessage());
-			}
-
+         include 'connect_db.php' ;
+                try
+              {
+                //$base = new PDO('mysql:host=localhost;dbname=chifaa;charset=utf8', 'root', '');
+                 $base = new PDO('mysql:host='.$servername.';dbname='.$dbname.';charset=utf8', $username, $password);
+            }
+               catch (Exception $e)
+                {
+                 die('Erreur : ' . $e->getMessage());
+                }
 		// on calcule la date actuelle
 		$date = date("Y-m-d H:i:s");
-
 		// préparation de la requête d'insertion (pour la table forum_sujets)
-		//$sql = 'INSERT INTO forum_sujets VALUES("", "'.mysql_escape_string($_POST['auteur']).'", "'.mysql_escape_string($_POST['titre']).'", "'.$date.'")';
 		$req = $base->prepare('INSERT INTO forum_sujets (id, auteur,titre,date_derniere_reponse) VALUES(:id,:auteur , :titre, :date_derniere_reponse)');
-
-		//on lance la requête (mysql_query) et on impose un message d'erreur si la requête ne se passe pas bien (or die)
-		//mysql_query($sql) or die('Erreur SQL !'.$sql.'<br />'.mysql_error());
-
 		$req->execute(array(
 			'id' => "",
 			'auteur' => $_POST['auteur'],
@@ -54,8 +51,6 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 		
 
 		// lancement de la requête d'insertion (pour la table forum_reponses
-		//$sql = 'INSERT INTO forum_reponses VALUES("", "'.mysql_escape_string($_POST['auteur']).'", "'.mysql_escape_string($_POST['message']).'", "'.$date.'", "'.$id_sujet.'")';
-
 		$sql = $base->prepare('INSERT INTO forum_reponses (id, auteur, message, date_reponse,correspondance_sujet) VALUES (:id, :auteur , :message, :date_reponse, :correspondance_sujet)');
 		$sql -> execute(array(
 			'id' => "", 
@@ -66,16 +61,9 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 
 	    ));
 
-		// on lance la requête (mysql_query) et on impose un message d'erreur si la requête ne se passe pas bien (or die)
-		//mysql_query($sql) or die('Erreur SQL !'.$sql.'<br />'.mysql_error());
-
-		// on ferme la connexion à la base de données
-		//$sql->closeCursor();
 		mysql_close();
-
 		// on redirige vers la page d'accueil
 		header('Location: FAQ.php');
-
 		// on termine le script courant
 		exit;
 	}
@@ -84,52 +72,39 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 ?>
 <html>
 <head>
-<title>Insertion d'un nouveau sujet</title>
+	<title>Insertion d'un nouveau sujet</title>
         <?php include 'templates/includes/$head.html' ?>
-        <style>
-            #map {height: 240px;
-                    width: 130%;
-                }
-           
-        </style>
 		<link href="templates/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
                 <link href="templates/fonts" rel="stylesheet"  media="all" />
 		<script src="templates/js/bootstarp.min.js"></script>
 </head>
 
 <body>
-		 <div class="navigation">
-            <?php include 'templates/includes/$navigation_intranet.html' ?>
-         </div>
-		  </br>
-          </br>
-          </br>
-          </br>
-          <div class="row">
-          <div class="col-lg-12">
-           <div class="container">
-        <div class="row">
-            <h1> Insertion d'un sujet</h1>
-        </div>
-
-        
-        </div>
-    
+	 <div class="navigation">
+            <?php include 'templates/includes/$navigation.php' ?>
+     </div>
+	 </br>
+     </br>
+     </br>
+     </br>
+    <div class="row">
+      <div class="col-lg-12">
+         <div class="container">
+        	<div class="row">
+            	<h1> Insertion d'un sujet</h1>
+       		 </div> 
    
 <!-- on fait pointer le formulaire vers la page traitant les données -->
 <!--<form action="insert_sujet.php" method="post"> -->
 	<form class="form-horizontal" action="insert_sujet.php" method="post">
-			<fieldset>
-				<br>
-			<!-- Form Name -->
-			
+		<fieldset>
+			<br>		
 			<br>
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="auteur">Nom d'utilisateur</label>  
 			  <div class="col-md-4">
-			  <input id="Auteur" name= "auteur" type="text"  placeholder="" class="form-control input-md" value="<?php if (isset($_POST['auteur'])) echo htmlentities(trim($_POST['auteur'])); ?>">
-			    
+			  		<input id="Auteur" name= "auteur" type="text"  placeholder="" class="form-control input-md" value="<?php if (isset($_POST['auteur'])) echo htmlentities(trim($_POST['auteur'])); ?>">			    
 			  </div>
 			</div>
 			<br>
@@ -145,12 +120,12 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="message">Message</label>
 			  <div class="col-md-4">                     
-			    <textarea class="form-control" id="message" name="message" rows="10" cols="60"><?php if (isset($_POST['message'])) echo htmlentities(trim($_POST['message'])); ?>saisir votre message...</textarea>
+			    <textarea class="form-control" id="message" name="message" rows="10" cols="60"><?php if (isset($_POST['message'])) echo htmlentities(trim($_POST['message'])); ?></textarea>
 			  </div>
 			</div>
 
 			</fieldset>
-		<input type="submit" name ="go" class="btn btn-info" value="Poster">
+		<input type="submit" name ="go" class="row btn btn-info col-md-1 col-md-offset-4" value="Poster">
 </form>
 
 
@@ -158,5 +133,10 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 // on affiche les erreurs éventuelles
 if (isset($erreur)) echo '<br /><br />',$erreur;
 ?>
+</div></div></div></br></br></br></br>
+<!--footer pied de page-->
+			<div class="footer">
+				<?php include 'templates/includes/$footpage.html' ?>
+			</div>
 </body>
 </html>
