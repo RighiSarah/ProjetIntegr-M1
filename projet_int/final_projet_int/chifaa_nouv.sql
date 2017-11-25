@@ -195,7 +195,31 @@ INSERT INTO `visites` (`identpers`, `nom`, `prenom`, `email`, `lien`, `lieu`, `v
 ('nina@gmail.com', 'nina', 'provost', 'nina@gmail.com', 'Famille', 'Établissement de santé', 0),
 ('kyle@gmail.com', 'kyle', 'earp', 'kyle@gmail.com', 'Autre', 'À domicile', 0),
 ('simon@gmail.com', 'Simon', 'provost', 'simon@gmail.com', 'Ami', 'À domicile', 0);
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `sujets forum`
+--
+CREATE TABLE forum_sujets (
+  id int(6) NOT NULL auto_increment,
+  auteur VARCHAR(30) NOT NULL,
+  titre text NOT NULL,
+  date_derniere_reponse datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponses forum`
+--
+CREATE TABLE forum_reponses (
+  id int(6) NOT NULL auto_increment,
+  auteur VARCHAR(30) NOT NULL,
+  message text NOT NULL,
+  date_reponse datetime NOT NULL default '0000-00-00 00:00:00',
+  correspondance_sujet int(6) NOT NULL,
+  PRIMARY KEY  (id)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Index pour les tables exportées
 --
