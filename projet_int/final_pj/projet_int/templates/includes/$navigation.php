@@ -46,16 +46,33 @@
   </div>
 </div>
 
-<div class="dropdown">
-  <a href="#">AIDEZ-NOUS</a>
-  <div class="dropdown-content">
-    <a href="Visite.php">Prévoir une visite</a>
-    <a href="Inscription.php">Devenir bénévole</a>
+<?php
 
-    <!--<a href="aide.php#visite">Prévoir une visite</a>
-    <a href="aide.php#inscription">Devenir bénévole</a>-->
-  </div>
-</div>
+    if ($_SESSION['login_role']==1){
+            echo "<div class='dropdown'>
+                    <a href='#''>VALIDATION</a>
+                    <div class='dropdown-content'>
+                      <a href='val_ins.php'>Des inscriptions</a>
+                      <a href='val_vis.php'>Des visites</a>
+                    </div>
+                  </div>";
+    }else if($_SESSION['login_role']==0){
+        echo "<div class='dropdown'>
+                <a href='Visite.php'>Prévoir une visite</a>
+              </div>";
+      
+      
+    }else{
+      echo "<div class='dropdown'>
+            <a href='#''>AIDEZ-NOUS</a>
+            <div class='dropdown-content'>
+              <a href='Visite.php>Prévoir une visite</a>
+              <a href='Inscription.php'>Devenir bénévole</a>
+            </div>
+          </div>";
+    }
+?>
+
               
 <a href="contact.php">CONTACT</a>
 <a href="partenaire.php">PARTENAIRES</a>

@@ -17,12 +17,47 @@ if(isset($_POST['env'])){
             //echo "header";
             header ("Location: connexion.php?tent=1");
         }else{
+        	 require 'connect_db.php' ;
+			
+			
+			//creer la connection 
+			$conn = new mysqli($servername, $username, $password, $dbname);
+
+			if ($conn->connect_error){
+				die("Connection échoue: " . $conn->connect_error);
+			}
 
             $_SESSION['ident'] = $identifiant;
             
             //echo "je suis ".$_SESSION["ident"];
-        }     
+
+            $user_check = $identifiant;
+			$ses_sql = "SELECT Role FROM personnes WHERE Identifiant = '".$user_check."'";
+			//echo $ses_sql;
+			if($conn->query($ses_sql) !== FALSE){
+				
+				$events = mysqli_query($conn,$ses_sql) or die (mysqli_error($conn));
+				
+				$array = array();
+
+				while ($row = mysqli_fetch_assoc($events)) {
+					$array[] = $row;
+				}
+				print_r($array);
+				$user_role = $array[0]['Role'];
+				//echo $user_role;
+				if( $user_role == 1 or $user_role == 0){
+		 			$_SESSION['login_role'] = $user_role;
+		 			//echo "je suis ".$_SESSION['login_role'];
+				}
+			} else {
+				echo "Erreur: " .$ses_sql. "<br>" .$conn->error;
+			}
+			$conn->close();
+		}     
 }	 
+
+
 ?>
 
 <!DOCTYPE HTML> 

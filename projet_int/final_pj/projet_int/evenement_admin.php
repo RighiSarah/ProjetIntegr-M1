@@ -28,27 +28,6 @@ if (isset($_POST['supp'])or isset($_POST['modif'])){
 				die("Connection échoue: " . $conn->connect_error);
 			}
 
-			$user_check = $_SESSION['ident'];
-			$ses_sql = "SELECT Role FROM personnes WHERE Identifiant = '".$user_check."'";
-			//echo $ses_sql;
-			if($conn->query($ses_sql) !== FALSE){
-				
-				$events = mysqli_query($conn,$ses_sql) or die (mysqli_error($conn));
-				
-				$array = array();
-
-				while ($row = mysqli_fetch_assoc($events)) {
-					$array[] = $row;
-				}
-				
-				$user_role = $array[0]['Role'];
-				//echo $user_role;
-				if( $user_role === 1 or $user_role === 0){
-         			$_SESSION['login_role'] = $user_role;
-				}
-			} else {
-				echo "Erreur: " .$ses_sql. "<br>" .$conn->error;
-			}
 		?>
 		<!-- bar de menu -->
 		<div class="navigation">
@@ -62,7 +41,7 @@ if (isset($_POST['supp'])or isset($_POST['modif'])){
 				</div>
 
 				<?php 
-					if ($user_role == 1){
+					if ($_SESSION['login_role']== 1){
 						echo "<form action='evenement.php' style='padding-left:9em; font-size:20px;'>
 		    				<input type='submit' value='&#xf067;' />
 						</form>";
@@ -117,7 +96,7 @@ if (isset($_POST['supp'])or isset($_POST['modif'])){
 									echo '<tr>
 											<td rowspan="2" class="title">'.$array[$i]["Titre"].'</td>
 											<td>'. $array[$i]["Date"].'</td>';
-										if ($user_role == 1){
+										if ($_SESSION['login_role'] == 1){
 											echo "<td rowspan='3' align='center'>
 													<form action='event_modif.php' method='POST' style = 'width:100%;'>
 														<input type='submit' name='mod' class='btn_icon' value='&#xf040;' />
