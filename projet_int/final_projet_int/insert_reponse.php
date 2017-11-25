@@ -5,11 +5,11 @@ ini_set('display_errors', 1); //afficher les warnings
 // on teste si le formulaire a été soumis
 if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 	// on teste le contenu de la variable $auteur
-	if (!isset($_POST['auteur']) || !isset($_POST['message']) || !isset($_GET['numero_du_sujet'])) {
+	if ( !isset($_POST['message']) || !isset($_GET['numero_du_sujet'])) {
 	$erreur = 'Les variables nécessaires au script ne sont pas définies.';
 	}
 	else {
-	if (empty($_POST['auteur']) || empty($_POST['message']) || empty($_GET['numero_du_sujet'])) {
+	if ( empty($_POST['message']) || empty($_GET['numero_du_sujet'])) {
 		$erreur = '<div class="alert alert-danger">
   					<strong>ERREUR !</strong> Au moins un des champs est vide.
 				</div>';
@@ -29,13 +29,23 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 
 		// on recupere la date de l'instant présent
 		$date = date("Y-m-d H:i:s");
+		// on recupere le nom d'utilisateur 
+		$user_check = $_SESSION['ident'];
+			// on prépare notre requête
+		$ses_sql = $base-> query ('SELECT Nom, Prenom FROM personnes WHERE Identifiant="'.$user_check.'"');
+		//$ses_sql = "SELECT (Nom,Prenom) FROM personnes WHERE Identifiant = '".$user_check."'";
+		while ($data = $ses_sql->fetch()) {
+				$auteur = $data['Nom']." ".$data['Prenom'];
+		}
+				$ses_sql->closeCursor();
+	
 		// on recupere l'id du sujet 
 		$id_sujet= $_GET['numero_du_sujet'];
 		// préparation de la requête d'insertion (table forum_reponses)
 		$sql = $base->prepare('INSERT INTO forum_reponses (id, auteur, message, date_reponse,correspondance_sujet) VALUES (:id, :auteur , :message, :date_reponse, :correspondance_sujet)');
 		$sql -> execute(array(
 			'id' => "", 
-			'auteur' => $_POST['auteur'],
+			'auteur' => $auteur,
 			'message' => $_POST['message'],
 			'date_reponse' => $date,
 			'correspondance_sujet' => $id_sujet
@@ -93,7 +103,7 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 			<fieldset>
 			<br>
 			<br>
-			<!-- Text input-->
+			<!-- Text input
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="auteur">Nom d'utilisateur</label>  
 			  <div class="col-md-4">
@@ -101,7 +111,7 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 			    
 			  </div>
 			</div>
-			<br>
+			<br> -->
 			
 			<!-- Textarea -->
 			<div class="form-group">

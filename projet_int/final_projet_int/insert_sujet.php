@@ -4,12 +4,12 @@ ini_set('display_errors', 1); //afficher les warnings
 // on teste si le formulaire a été soumis
 if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 	// on teste la déclaration de nos variables
-	if (!isset($_POST['auteur']) || !isset($_POST['titre']) || !isset($_POST['message'])) {
+	if (!isset($_POST['titre']) || !isset($_POST['message'])) {
 	$erreur = 'Les variables nécessaires au script ne sont pas définies.';
 	}
 	else {
 	// on teste si les variables ne sont pas vides
-	if (empty($_POST['auteur']) || empty($_POST['titre']) || empty($_POST['message'])) {
+	if ( empty($_POST['titre']) || empty($_POST['message'])) {
 		$erreur = '<div class="alert alert-danger">
   					<strong>ERREUR !</strong> Au moins un des champs est vide.
 				</div>';
@@ -30,11 +30,21 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
                 }
 		// on calcule la date actuelle
 		$date = date("Y-m-d H:i:s");
+		// on recupere le nom d'utilisateur 
+		$user_check = $_SESSION['ident'];
+			// on prépare notre requête
+		$ses_sql = $base-> query ('SELECT Nom, Prenom FROM personnes WHERE Identifiant="'.$user_check.'"');
+		//$ses_sql = "SELECT (Nom,Prenom) FROM personnes WHERE Identifiant = '".$user_check."'";
+		while ($data = $ses_sql->fetch()) {
+				$auteur = $data['Nom']." ".$data['Prenom'];
+		}
+				$ses_sql->closeCursor();
+	
 		// préparation de la requête d'insertion (pour la table forum_sujets)
 		$req = $base->prepare('INSERT INTO forum_sujets (id, auteur,titre,date_derniere_reponse) VALUES(:id,:auteur , :titre, :date_derniere_reponse)');
 		$req->execute(array(
 			'id' => "",
-			'auteur' => $_POST['auteur'],
+			'auteur' => $auteur,
 			'titre' => $_POST['titre'],
 			'date_derniere_reponse' => $date
 		));
@@ -54,7 +64,7 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 		$sql = $base->prepare('INSERT INTO forum_reponses (id, auteur, message, date_reponse,correspondance_sujet) VALUES (:id, :auteur , :message, :date_reponse, :correspondance_sujet)');
 		$sql -> execute(array(
 			'id' => "", 
-			'auteur' => $_POST['auteur'],
+			'auteur' => $auteur,
 			'message' => $_POST['message'],
 			'date_reponse' => $date,
 			'correspondance_sujet' => $id_sujet
@@ -100,14 +110,14 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 		<fieldset>
 			<br>		
 			<br>
-			<!-- Text input-->
+			<!-- Text input
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="auteur">Nom d'utilisateur</label>  
 			  <div class="col-md-4">
 			  		<input id="Auteur" name= "auteur" type="text"  placeholder="" class="form-control input-md" value="<?php if (isset($_POST['auteur'])) echo htmlentities(trim($_POST['auteur'])); ?>">			    
 			  </div>
 			</div>
-			<br>
+			<br> -->
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="titre">Titre du sujet</label>  
