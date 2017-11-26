@@ -111,7 +111,7 @@
   require("connect_db.php");
   $conn = new mysqli($servername,$username, $password,$dbname);
   if($conn !=null){
-          $stmt = "SELECT personnes.* FROM personnes WHERE Personnes.valide= 0";
+          $stmt = "SELECT personnes.* FROM personnes WHERE personnes.valide= 0";
           $liste = $conn->query($stmt);
          }
         
