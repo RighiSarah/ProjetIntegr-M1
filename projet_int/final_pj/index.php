@@ -8,21 +8,28 @@ include 'connect_db.php';
 				die("Connection échoue: " . $conn->connect_error);
 			}
 
-$user_check = $_SESSION['ident'];
-			$ses_sql = "SELECT Role FROM personnes WHERE Identifiant = '".$user_check."'";
-			//echo $ses_sql;
-			if($conn->query($ses_sql) !== FALSE){
+			if (isset($_SESSION['ident'])) { // vérifier s'il est connecté !!!
+				$user_check = $_SESSION['ident']; // reprendre l'id du compte connecté (si on ne vérifié pas avant d'appeller ca va donner une erreur !)
+			} else {
+				$user_check = null;
+			}
 
-				$events = mysqli_query($conn,$ses_sql) or die (mysqli_error($conn));
+			$ses_sql = "SELECT Role FROM personnes WHERE Identifiant = '".$user_check."'";
+			$u = $conn->query($ses_sql)->fetch_assoc(); // fetch_assoc remplace le code en commmentaire
+			//echo $ses_sql;
+			if($u !== FALSE){
+				// Pas besoin de faire une boucle pour récuperer une seule valeur, fetch_assoc suffit pour récupérer le role souhaité
+				/* $events = mysqli_query($conn,$ses_sql) or die (mysqli_error($conn));
 
 				$array = array();
 
 				while ($row = mysqli_fetch_assoc($events)) {
 					$array[] = $row;
-				}
+				} */
 
-				$user_role = $array[0]['Role'];
-				
+				// $user_role = $array[0]['Role'];
+				$user_role = $u['Role']; 
+
 				if( $user_role == 1 or $user_role == 0){
          			$_SESSION['login_role'] = $user_role;
 				}
