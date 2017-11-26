@@ -25,7 +25,7 @@
 										<h1> Nos partenaires </h1>
 										<br/>
 										<p style="text-align:center;">
-											<img src="images/capture.png">
+											<img src="images/Capture.PNG">
 											<img src="https://placehold.it/150x50">
 											<img src="https://placehold.it/150x50">
 											<img src="https://placehold.it/150x50">
