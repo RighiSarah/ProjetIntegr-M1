@@ -36,6 +36,9 @@ if (isset($_POST['supp'])){
 
             $sql = "SELECT * FROM message ORDER BY identifiant DESC";
             $events = mysqli_query($conn,$sql);
+            //initialiser array
+            $array = array();
+            //entrer dans while pour etre certain que array existe 
             while ($row = mysqli_fetch_assoc($events)) {
                 $array[] = $row;
             }
