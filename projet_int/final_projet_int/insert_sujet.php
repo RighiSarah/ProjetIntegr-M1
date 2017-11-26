@@ -52,7 +52,6 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 		// on recupère l'id qui vient de s'insérer dans la table forum_sujets
 		$id_sujet = $base->lastInsertId();
 
-		echo "New record created successfully. Last inserted ID is: " . $id_sujet;
 		    }
 		catch(PDOException $e)
 		    {
