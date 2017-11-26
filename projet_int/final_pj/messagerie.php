@@ -58,7 +58,7 @@ if (isset($_POST['supp'])){
                             <td>".$array[$i]["sujet"]."</td>
                             <td>".$array[$i]["mess"]."</td>
                             <td>".$array[$i]["repond"]."</td>";
-                            if($array[$i]["repond"]!=="Répondu"){
+                            if($array[$i]["repond"]!=="Repondu"){
                             echo"
                             <form action='mess_repond.php' method = 'POST'>
                                 <td><input name='rep' type='submit' value='Répondre'></td>
@@ -98,7 +98,7 @@ if (isset($_POST['supp'])){
                             
                 //change statut de message  
                 $id = $_POST['id_mess'];   
-                $req = "UPDATE message SET repond='Répondu' WHERE identifiant = ?";
+                $req = "UPDATE message SET repond='Repondu' WHERE identifiant = ?";
                 $stmt = $conn->prepare($req);
                 $stmt->bind_param("i",$id);
                 $events = $stmt->execute();
