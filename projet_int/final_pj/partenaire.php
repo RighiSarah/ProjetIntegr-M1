@@ -25,11 +25,8 @@
 										<h1> Nos partenaires </h1>
 										<br/>
 										<p style="text-align:center;">
-											<img src="images/Capture.PNG">
-											<img src="https://placehold.it/150x50">
-											<img src="https://placehold.it/150x50">
-											<img src="https://placehold.it/150x50">
-											<img src="https://placehold.it/150x50">
+											<a href="http://www.albatros69.org/" target="_blank"><img src="images/Capture.PNG" ></a>
+											<a href="http://www.olivierdessages.com/"  target="_blank"><img src="images/Capture1.jpeg"></a>
 										</p>
 									</div>
 								</div>
