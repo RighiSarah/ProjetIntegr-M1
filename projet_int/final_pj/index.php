@@ -120,5 +120,67 @@ include 'connect_db.php';
 			</div>
 
 		</div>
+		<script type="text/javascript">
+			function ModifierPrincipe(editing) {
+				// Lorsqu'on clique sur le bouton pour modifier
+				if (editing) {
+					// js:  document.getElementById(principe-content).
+					$('#principe-content').css('display','none'); // On cache le contenu de principe
+					$('#principe-content-edit').html("<textarea id='principeval' style='width:100%; height:500px'>"+$('#principe-content').html()+"</textarea>"); // On rajoute textarea avec le contenu de principe
+					$('#principe-content-edit').css('display','block'); // On active la div du textarea au cas où elle a été caché par une modification précédente
+					$('#editprincipe').attr('onclick','ModifierPrincipe(false)'); // On change le mode du bouton
+				} else { // Lors qu'il reclique sur le bouton pour terminer la modif
+					$('#principe-content').html($('#principeval').val()); // On met le contenu du textarea dans la balise principe
+					$('#principe-content').css('display','block'); // On réactive qu'on a caché précédement
+					$('#principe-content-edit').css('display','none'); // On désactive (cache) du coup le textarea
+					$('#editprincipe').attr('onclick','ModifierPrincipe(true)'); // On change le mode du bouton
+				}
+			}
+			function ModifierValeurs(editing) {
+				
+				if (editing) {
+					// js:  document.getElementById(principe-content).
+					$('#valeurs-content').css('display','none'); // On cache le contenu de valeurs
+					$('#valeurs-content-edit').html("<textarea id='valeursval' style='width:100%; height:500px'>"+$('#valeurs-content').html()+"</textarea>"); // On rajoute textarea avec le contenu de valeurs
+					$('#valeurs-content-edit').css('display','block'); // On active la div du textarea au cas où elle a été caché par une modification précédente
+					$('#editvaleurs').attr('onclick','ModifierValeurs(false)'); // On change le mode du bouton
+				} else { // Lors qu'il reclique sur le bouton pour terminer la modif
+					$('#valeurs-content').html($('#valeursval').val()); // On met le contenu du textarea dans la balise valeurs
+					$('#valeurs-content').css('display','block'); // On réactive qu'on a caché précédement
+					$('#valeurs-content-edit').css('display','none'); // On désactive (cache) du coup le textarea
+					$('#editvaleurs').attr('onclick','ModifierValeurs(true)'); // On change le mode du bouton
+				}
+			}
+			function ModifierActions(editing) {
+				
+				if (editing) {
+					// js:  document.getElementById(principe-content).
+					$('#actions-content').css('display','none'); // On cache le contenu de actions
+					$('#actions-content-edit').html("<textarea id='actionsval' style='width:100%; height:500px'>"+$('#actions-content').html()+"</textarea>"); // On rajoute textarea avec le contenu de actions
+					$('#actions-content-edit').css('display','block'); // On active la div du textarea au cas où elle a été caché par une modification précédente
+					$('#editactions').attr('onclick','ModifierActions(false)'); // On change le mode du bouton
+				} else { // Lors qu'il reclique sur le bouton pour terminer la modif
+					$('#actions-content').html($('#actionsval').val()); // On met le contenu du textarea dans la balise actions
+					$('#actions-content').css('display','block'); // On réactive qu'on a caché précédement
+					$('#actions-content-edit').css('display','none'); // On désactive (cache) du coup le textarea
+					$('#editactions').attr('onclick','ModifierActions(true)'); // On change le mode du bouton
+				}
+			}
+			function ModifierWho(editing) {
+				
+				if (editing) {
+					// js:  document.getElementById(who-content).
+					$('#who-content').css('display','none'); // On cache le contenu de who
+					$('#who-content-edit').html("<textarea id='whoval' style='width:100%; height:500px'>"+$('#who-content').html()+"</textarea>"); // On rajoute textarea avec le contenu de who
+					$('#who-content-edit').css('display','block'); // On active la div du textarea au cas où elle a été caché par une modification précédente
+					$('#editwho').attr('onclick','ModifierWho(false)'); // On change le mode du bouton
+				} else { // Lors qu'il reclique sur le bouton pour terminer la modif
+					$('#who-content').html($('#whoval').val()); // On met le contenu du textarea dans la balise who
+					$('#who-content').css('display','block'); // On réactive qu'on a caché précédement
+					$('#who-content-edit').css('display','none'); // On désactive (cache) du coup le textarea
+					$('#editwho').attr('onclick','ModifierWho(true)'); // On change le mode du bouton
+				}
+			}
+		</script>
 	</body>
 </html>
