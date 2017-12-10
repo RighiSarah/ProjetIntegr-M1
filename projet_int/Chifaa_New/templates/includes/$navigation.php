@@ -1,6 +1,6 @@
   <div class="navigation clearfix"> 
   	<div class="logo">
-  	    <a href="index.php"><img src="images/logo.png" alt="Chifaa"></a>
+  	    <a href="index.php"><img src="images/logo2.png" alt="Chifaa"></a>
   	</div>
   	<div class="menu">
   		<div class="dropdown">
