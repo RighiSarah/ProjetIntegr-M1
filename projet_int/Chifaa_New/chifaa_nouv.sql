@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.10
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
--- Généré le :  Sam 09 Décembre 2017 à 12:18
--- Version du serveur :  5.5.42
--- Version de PHP :  7.0.0
+-- Généré le :  Dim 10 Décembre 2017 à 16:08
+-- Version du serveur :  5.6.35
+-- Version de PHP :  7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,6 +28,26 @@ CREATE TABLE `actions` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `contenu`
+--
+
+CREATE TABLE `contenu` (
+  `principe` text NOT NULL,
+  `valeurs` text NOT NULL,
+  `actions` text NOT NULL,
+  `quisommesnous` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `contenu`
+--
+
+INSERT INTO `contenu` (`principe`, `valeurs`, `actions`, `quisommesnous`) VALUES
+('Modification de la section Principe, tester la modification avec long texte', 'Modification la section Valeurs, tester avec long texte', 'Modification de la section Nos actions, tester la modification avec long texte', 'Modification de la section Qui sommes-nous?, tester la modification avec long texte');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `evenements`
 --
 
@@ -38,14 +58,14 @@ CREATE TABLE `evenements` (
   `Heure` time DEFAULT NULL,
   `Objectif` varchar(1000) DEFAULT NULL,
   `Lieu` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `evenements`
 --
 
 INSERT INTO `evenements` (`identifiant`, `Titre`, `Date`, `Heure`, `Objectif`, `Lieu`) VALUES
-(12, 'Gala de charitÃ© ', '2017-12-28', '20:00:00', 'Afin de rÃ©colter des fonds pour notre association, nous organisons un gala de charitÃ©. Partagez l''information avec vos amis ! ', 'Vieux Lyon');
+(12, 'Gala de charité', '2017-12-28', '20:00:00', 'Afin de récolter des fonds pour notre association, nous organisons un gala de charité. Partagez l\'information avec vos amis ! ', 'Vieux Lyon');
 
 -- --------------------------------------------------------
 
@@ -59,17 +79,17 @@ CREATE TABLE `forum_reponses` (
   `message` text NOT NULL,
   `date_reponse` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `correspondance_sujet` int(6) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `forum_reponses`
 --
 
 INSERT INTO `forum_reponses` (`id`, `auteur`, `message`, `date_reponse`, `correspondance_sujet`) VALUES
-(27, 'Durand Marie', 'Bonjour, j''aimerais prévoir une visite mais je ne sais pas comment faire ? ', '2017-11-28 11:15:44', 19),
-(28, 'Dupont Jacques', 'Salut Marie, il suffit que tu te rendes sur la page "Prévoir une visite", onglet "Nous aider" ou bien tu peux directement te rendre sur la page d''accueil et clier sur le bouton central (vert) prévoir une visite ! :) ', '2017-11-28 11:17:31', 19),
-(29, 'Dupont Jacques', 'Bonjour, un ami aimerait devenir bénévole de l''association, puis-je valider son inscription ? ', '2017-11-28 11:19:00', 20),
-(30, 'Benzouak Nadia', 'Bonjour Jacques, seule l''administratrice du site peut valider les demandes d''inscription. Ton ami peut faire une demande d''inscription et je me chargerai de le contacter avant de valider son inscription. Il pourra alors se connecter et accéder à son espace membre !', '2017-11-28 11:20:47', 20),
+(27, 'Durand Marie', 'Bonjour, j\'aimerais prévoir une visite mais je ne sais pas comment faire ? ', '2017-11-28 11:15:44', 19),
+(28, 'Dupont Jacques', 'Salut Marie, il suffit que tu te rendes sur la page \"Prévoir une visite\", onglet \"Nous aider\" ou bien tu peux directement te rendre sur la page d\'accueil et clier sur le bouton central (vert) prévoir une visite ! :) ', '2017-11-28 11:17:31', 19),
+(29, 'Dupont Jacques', 'Bonjour, un ami aimerait devenir bénévole de l\'association, puis-je valider son inscription ? ', '2017-11-28 11:19:00', 20),
+(30, 'Benzouak Nadia', 'Bonjour Jacques, seule l\'administratrice du site peut valider les demandes d\'inscription. Ton ami peut faire une demande d\'inscription et je me chargerai de le contacter avant de valider son inscription. Il pourra alors se connecter et accéder à son espace membre !', '2017-11-28 11:20:47', 20),
 (31, 'Benzouak Nadia', 'merci', '2017-11-28 14:35:22', 20);
 
 -- --------------------------------------------------------
@@ -83,7 +103,7 @@ CREATE TABLE `forum_sujets` (
   `auteur` varchar(30) NOT NULL,
   `titre` text NOT NULL,
   `date_derniere_reponse` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `forum_sujets`
@@ -108,14 +128,14 @@ CREATE TABLE `message` (
   `sujet` text NOT NULL,
   `mess` text NOT NULL,
   `repond` varchar(20) DEFAULT 'En attente'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `message`
 --
 
 INSERT INTO `message` (`identifiant`, `nom`, `prenom`, `mail`, `date`, `sujet`, `mess`, `repond`) VALUES
-(4, 'Reiss', 'ValÃ©rie', 'valerie.reiss@gmail.com', '2017-12-07', 'Devenir bÃ©nÃ©vole', 'Bonjour j''aimerais devenir bÃ©nÃ©vole ! ', 'En attente');
+(4, 'Reiss', 'ValÃ©rie', 'valerie.reiss@gmail.com', '2017-12-07', 'Devenir bÃ©nÃ©vole', 'Bonjour j\'aimerais devenir bÃ©nÃ©vole ! ', 'En attente');
 
 -- --------------------------------------------------------
 
@@ -141,7 +161,7 @@ CREATE TABLE `patient` (
   `prenom` varchar(20) NOT NULL,
   `lieu` varchar(20) NOT NULL,
   `adresse` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `patient`
@@ -402,27 +422,27 @@ ALTER TABLE `valeurs`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `identifiant` int(50) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `identifiant` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `forum_reponses`
 --
 ALTER TABLE `forum_reponses`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT pour la table `forum_sujets`
 --
 ALTER TABLE `forum_sujets`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `identifiant` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `identifiant` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `identifiant` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `identifiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `pers_ev_part`
 --
