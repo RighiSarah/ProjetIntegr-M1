@@ -1,5 +1,5 @@
 <?php session_start();
-
+ini_set('display_errors', 1);
 include 'connect_db.php';
 //creer la connection
 			$conn = new mysqli($servername, $username, $password, $dbname);
@@ -62,7 +62,57 @@ include 'connect_db.php';
 					<div class="container">
 						<div class="row">
 							<div class="principe">
-								<h1>Principe </h1>
+								<h1>Principe</h1>
+								<!--ici les boutons modification-->
+								
+								<?php  
+			
+								//creer la connection 
+								$conn = new mysqli($servername, $username, $password, $dbname);
+
+								if ($conn->connect_error){
+									die("Connection échoue: " . $conn->connect_error);
+								}
+
+								if ($_SESSION['login_role']== 1){
+									echo "<form action='index.php#principe' method='POST' style='float:right; display:inline;'>
+										<input type='submit' name='modif_principe' class='modif_supp' style ='background-color:white;' value='&#xf040;' />
+									</form>";
+								}
+								?>
+
+								<br/>
+								<br/>
+								<p>
+									<?php
+										if (isset($_POST['val_principe'])){
+											$sql = "UPDATE contenu SET principe = ?";
+											$stmt = $conn->prepare($sql);
+											$stmt->bind_param("s", $_POST['principe']);
+											$princ = $stmt->execute();
+										}
+
+										if (isset($_POST['modif_principe'])){
+											$sql = "SELECT principe FROM contenu";
+											$princ = mysqli_query($conn,$sql);
+
+											echo "<form action='index.php#principe' method='POST'>
+													<textarea name='principe' rows='6' cols='10' class='form-control' placeholder='Modifier la section Principe'>".mysqli_fetch_assoc($princ)['principe']."</textarea><br>
+													<input type='submit' name = 'val_principe' value='Valider' class='btn btn-form'/>
+
+												</form>";
+
+										}else{
+										
+											$sql = "SELECT principe FROM contenu";
+											$princ = mysqli_query($conn,$sql);
+											echo mysqli_fetch_assoc($princ)['principe'];
+
+										}
+
+										$conn->close();
+									?>
+								</p> <!--ici le contenu-->
 							</div>
 						</div>
 					</div>
@@ -74,6 +124,55 @@ include 'connect_db.php';
 						<div class="row">
 							<div class="valeurs">
 								<h1> Valeurs </h1>
+								<!--ici les boutons modification-->
+								
+								<?php  
+			
+								//creer la connection 
+								$conn = new mysqli($servername, $username, $password, $dbname);
+
+								if ($conn->connect_error){
+									die("Connection échoue: " . $conn->connect_error);
+								}
+
+								if ($_SESSION['login_role']== 1){
+									echo "<form action='index.php#Valeurs' method='POST' style='float:right; display:inline;'>
+										<input type='submit' name='modif_valeurs' class='modif_supp' style ='background-color:white;' value='&#xf040;' />
+									</form>";
+								}
+								?>
+
+								<br/>
+								<br/>
+								<p>
+									<?php
+										if (isset($_POST['val_valeurs'])){
+											$sql = "UPDATE contenu SET valeurs = ?";
+											$stmt = $conn->prepare($sql);
+											$stmt->bind_param("s", $_POST['valeurs']);
+											$value = $stmt->execute();
+										}
+
+										if (isset($_POST['modif_valeurs'])){
+											$sql = "SELECT valeurs FROM contenu";
+											$value = mysqli_query($conn,$sql);
+
+											echo "<form action='index.php#Valeurs' method='POST'>
+													<textarea name='valeurs' rows='6' cols='10' class='form-control' placeholder='Modifier la section Valeurs'>".mysqli_fetch_assoc($value)['valeurs']."</textarea><br>
+													<input type='submit' name = 'val_valeurs' value='Valider' class='btn btn-form'/>
+												</form>";
+
+										}else{
+										
+											$sql = "SELECT valeurs FROM contenu";
+											$value = mysqli_query($conn,$sql);
+											echo mysqli_fetch_assoc($value)['valeurs'];
+
+										}
+
+										$conn->close();
+									?>
+								</p> <!--ici le contenu-->
 							</div>
 						</div>
 					</div>
@@ -84,6 +183,54 @@ include 'connect_db.php';
 						<div class="row">
 							<div class="Nosaction">
 								<h1> Nos actions </h1>
+								<!--ici les boutons -->
+								<?php  
+			
+								//creer la connection 
+								$conn = new mysqli($servername, $username, $password, $dbname);
+
+								if ($conn->connect_error){
+									die("Connection échoue: " . $conn->connect_error);
+								}
+
+								if ($_SESSION['login_role']== 1){
+									echo "<form action='index.php#actions' method='POST' style='float:right; display:inline;'>
+										<input type='submit' name='modif_actions' class='modif_supp' style ='background-color:white;' value='&#xf040;' />
+									</form>";
+								}
+								?>
+
+								<br/>
+								<br/>
+								<p>
+									<?php
+										if (isset($_POST['val_actions'])){
+											$sql = "UPDATE contenu SET actions = ?";
+											$stmt = $conn->prepare($sql);
+											$stmt->bind_param("s", $_POST['actions']);
+											$act = $stmt->execute();
+										}
+
+										if (isset($_POST['modif_actions'])){
+											$sql = "SELECT actions FROM contenu";
+											$act = mysqli_query($conn,$sql);
+
+											echo "<form action='index.php#actions' method='POST'>
+													<textarea name='actions' rows='6' cols='10' class='form-control' placeholder='Modifier la section Nos actions'>".mysqli_fetch_assoc($act)['actions']."</textarea><br>
+													<input type='submit' name = 'val_actions' value='Valider' class='btn btn-form'/>
+												</form>";
+
+										}else{
+										
+											$sql = "SELECT actions FROM contenu";
+											$act = mysqli_query($conn,$sql);
+											echo mysqli_fetch_assoc($act)['actions'];
+
+										}
+
+										$conn->close();
+									?>
+								</p> <!--ici le contenu-->
 							</div>
 						</div>
 					</div>
@@ -95,6 +242,54 @@ include 'connect_db.php';
 						<div class="row">
 							<div class="Quisommes">
 								<h1> Qui sommes-nous ? </h1>
+								<!--ici les boutons -->
+								<?php  
+			
+								//creer la connection 
+								$conn = new mysqli($servername, $username, $password, $dbname);
+
+								if ($conn->connect_error){
+									die("Connection échoue: " . $conn->connect_error);
+								}
+
+								if ($_SESSION['login_role']== 1){
+									echo "<form action='index.php#who' method='POST' style='float:right; display:inline;'>
+										<input type='submit' name='modif_who' class='modif_supp' style ='background-color:white;' value='&#xf040;' />
+									</form>";
+								}
+								?>
+
+								<br/>
+								<br/>
+								<p>
+									<?php
+										if (isset($_POST['val_who'])){
+											$sql = "UPDATE contenu SET quisommesnous = ?";
+											$stmt = $conn->prepare($sql);
+											$stmt->bind_param("s", $_POST['who']);
+											$who = $stmt->execute();
+										}
+
+										if (isset($_POST['modif_who'])){
+											$sql = "SELECT quisommesnous FROM contenu";
+											$who = mysqli_query($conn,$sql);
+
+											echo "<form action='index.php#who' method='POST'>
+													<textarea name='who' rows='6' cols='10' class='form-control' placeholder='Modifier la section Nos actions'>".mysqli_fetch_assoc($who)['quisommesnous']."</textarea><br>
+													<input type='submit' name = 'val_who' value='Valider' class='btn btn-form'/>
+												</form>";
+
+										}else{
+										
+											$sql = "SELECT quisommesnous FROM contenu";
+											$who = mysqli_query($conn,$sql);
+											echo mysqli_fetch_assoc($who)['quisommesnous'];
+
+										}
+
+										$conn->close();
+									?>
+								</p> <!--ici le contenu-->
 							</div>
 						</div>
 					</div>
