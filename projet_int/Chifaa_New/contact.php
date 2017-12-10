@@ -17,7 +17,7 @@
          <div class="container contact">
            <div class="col-md-6">
              <adress>
-                 Association CHIFAA<br/>
+                 CHIFAA<br/>
                  <br/>
                  4 Rue Victor Considerant<br/>
                  69150 D&eacute;cines-Charpieu<br/>
