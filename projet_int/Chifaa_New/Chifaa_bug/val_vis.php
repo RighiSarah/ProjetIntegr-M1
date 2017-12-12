@@ -4,6 +4,7 @@ session_start();
                 $redirection = $_SERVER['PHP_SELF'];
                 header("Location:$redirection");
             }
+ini_set('display_errors', 1); 
 ?>
 
 <!DOCTYPE HTML> 
@@ -51,12 +52,14 @@ session_start();
         <?php
             $vis = new Visites();
             $liste = $vis -> ListeVisites();
-            $i =0; 
-            if ($row = $liste -> fetch_assoc()){
+            $i =0;
+
+            if (mysqli_num_rows($liste) > 0){
+
 				echo " <table class='table table-striped'>";
 				echo " <thead><tr><th>Nom</th><th>Prénom</th><th>Mail</th><th>Lien</th><th>Autre</th><th>Lieu</th><th>Valider</th><th>Rejeter</th></tr></thead>";
 				echo "<tbody>";
-				 while ($row = $liste->fetch_assoc()){ 
+				while ($row = $liste ->fetch_assoc()){ 
 					
 					 echo "<tr><td>".$row["nom"]."</td><td>".$row["prenom"]."</td><td>".$row["email"].
 							 "</td><td>".$row["lien"]."</td><td>".$row["lien_autre"]."</td><td>".$row["lieu"]."</td><td><input name='ch".$i."' type='radio' value='acc'></td>"

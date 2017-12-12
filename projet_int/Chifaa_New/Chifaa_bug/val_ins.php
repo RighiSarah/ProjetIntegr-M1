@@ -52,7 +52,7 @@ session_start();
 					$ins = new Inscription();
 					$liste = $ins ->ListeDemandeInscription();
 					$i = 0; 
-					if ($row = $liste->fetch_assoc()){
+					if (mysqli_num_rows($liste) > 0){
 						echo " <table class='table table-striped'>";
 						echo " <thead><tr><th>Nom</th><th>Prénom</th><th>Mail</th><th>Telephone</th><th>Adresse</th><th>Valider</th><th>Rejeter</th></tr></thead>";
 						echo "<tbody>";
